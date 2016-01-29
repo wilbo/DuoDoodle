@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:700,400,300' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="javascripts/paper-full.min.js"></script>
+    <script type="text/paperscript" src="/javascripts/duodoodle.js" canvas="duodoodle"></script>
+  </head>
+  <body>
+    <canvas id="duodoodle"></canvas>
+  </body>
+</html>
