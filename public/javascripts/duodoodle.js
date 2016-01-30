@@ -2,18 +2,6 @@ var socket = io();
 var socketId;
 
 
-// hello/goodbye to get the socket id
-
-socket.on('hello client', function(msg) {
-
-  socketId = socket.id;
-
-  console.log(msg);
-  socket.emit('hello server', 'hello server!');
-
-})
-
-
 // store our path(s)
 var paths = {};
 
@@ -149,9 +137,53 @@ function loadSettings(obj, paths, socketId) {
 
 }
 
-// settings and tools and stuff
 
 $(document).ready(function() {
+
+
+
+  // room joiningrequest to make/join room
+
+  $('#room-form').submit(function(e) {
+    e.preventDefault();
+
+    // retrieve username from username input field
+    var roomName = $('#room-input').val();
+    // send a join request
+    socket.emit('joinReq', roomName);
+
+    return false;
+  });
+
+  // response to make/join room
+  socket.on('joinRoom', function(roomName) {
+
+    socketId = socket.id;
+
+   // remove the welcome box
+   $('#join-room-window').fadeOut(200).remove();
+   $('#room-name').html('Canvas name: <b>' + roomName + '</b>. ');
+
+  //  if (state) {
+  //    restoreSingleState(canvas, ctx, state);
+  //  }
+
+  });
+
+  socket.on('updateSocketCount', function(amountInRoom) {
+    $('#room-count').html('People here: <b>' + amountInRoom + '</b>.');
+  });
+
+  socket.on('roomNameError', function(errorMessage) {
+    $('#roomname-error').html(errorMessage);
+  });
+
+
+
+
+
+
+  // settings and tools and stuff
 
   // change color
   $('.color-tile').click(function() {

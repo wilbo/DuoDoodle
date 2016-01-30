@@ -60,5 +60,37 @@
 
     </div> <!-- /#left-control -->
 
+    <div id="room-info">
+			<p><span id="room-name"></span><span id="room-count"></span></p>
+		</div>
+
+		<div id="made-by">
+        <p>Made with <a href="https://nodejs.org/" target="_blank">node.js</a>. <a href="http://expressjs.com/" target="_blank">express</a> and <a href="http://socket.io/" target="_blank">socket.io</a> by <a href="http://wilbo.io/" target="_blank">wilbo</a>. </p>
+    </div>
+
+    <!-- joining modal -->
+    <div class="modal-window" id="join-room-window">
+
+			<div id="disclaimer">
+				<h3>Disclaimer:</h3>
+				<p>This webapp is currently in beta.</p>
+				<p>If you come across any disappointments let me know!</p>
+				<p><a href="mailto:hello@wilbo.io">hello@wilbo.io</a></p>
+			</div>
+
+			<div class="modal" id="join-room">
+
+				<h5>Welcome to DuoDoodle!</h5>
+				<p>Create a canvas to start drawing. Dont forget to share the name fo your canvas with a friend.</p>
+
+				<form action="" id="room-form">
+            <input type="text" id="room-input" autocomplete="off" maxlength="17" autofocus placeholder="name your canvas" />
+            <button type="submit" class="button">Start drawing</button>
+            <div id="roomname-error"></div>
+        </form>
+
+			</div>
+		</div>
+
   </body>
 </html>
