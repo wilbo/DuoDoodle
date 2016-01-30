@@ -11,6 +11,54 @@
     <script type="text/paperscript" src="/javascripts/duodoodle.js" canvas="duodoodle"></script>
   </head>
   <body>
+
     <canvas id="duodoodle"></canvas>
+
+    <div id="left-control">
+
+      <div class="colors">
+				<div class="color-tile tile-normal active" style="background-color:rgba(0,0,0,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(150,150,150,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(244, 67, 54,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(76, 175, 80,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(33, 150, 243,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(255, 193, 7,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(156, 39, 176,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(233, 30, 99,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(121, 85, 72,1);">&nbsp;</div>
+				<div class="color-tile tile-normal" style="background-color:rgba(239,208,207,1);">&nbsp;</div>
+			</div>
+
+      <div class="tile-divider tile-normal"></div>
+
+			<div class="mode">
+				<div class="mode-tile tile-normal active" id="pen" >{{> pen }}</div>
+				<div class="mode-tile tile-normal" id="erase" >{{> eraser }}</div>
+			</div>
+
+      <div class="tile-divider tile-normal"></div>
+
+      <div class="tools">
+				<div class="opacity-tile tile-normal" id="opacity"><span class="op100">{{> opacity }}</span></div>
+        <div class="layer-tile tile-normal above" id="layer" >{{> layer }}</div>
+			</div>
+
+      <div class="tile-divider tile-normal"></div>
+
+      <div class="size">
+				<div class="size-tile tile-normal"><span class="circle circle-small">&nbsp;</span></div>
+				<div class="size-tile tile-normal"><span class="circle circle-normal active">&nbsp;</span></div>
+				<div class="size-tile tile-normal"><span class="circle circle-medium">&nbsp;</span></div>
+				<div class="size-tile tile-normal"><span class="circle circle-large">&nbsp;</span></div>
+			</div>
+
+      <div class="tile-divider tile-normal"></div>
+
+      <div class="clear">
+				<div class="tools-tile tile-normal" id="trash">{{> trash }}</div>
+			</div>
+
+    </div> <!-- /#left-control -->
+
   </body>
 </html>
