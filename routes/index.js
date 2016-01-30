@@ -13,7 +13,12 @@ router.get('/', function(req, res, next) {
   		  'eraser': 'icon-eraser.svg',
   		  'github': 'icon-github.svg',
   		  'layer': 'icon-layer.svg',
-        'opacity': 'icon-opacity.svg'
+        'opacity': 'icon-opacity.svg',
+        'download': 'icon-download.svg',
+        'size-sa': 'icon-size-sa.svg',
+        'size-na': 'icon-size-na.svg',
+        'size-ma': 'icon-size-ma.svg',
+        'size-la': 'icon-size-la.svg'
       }
     });
 });

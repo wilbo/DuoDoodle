@@ -870,7 +870,7 @@ form, input {
   position: relative;
   left: -20px;
   box-shadow: 2px 2px 10px -6px rgba(0, 0, 0, 0.75);
-  transition: all 0.15s ease; }
+  transition: all 0.2s ease; }
   .tile-normal.color-tile.active {
     transform: translateX(5px); }
   .tile-normal.color-tile:hover {
@@ -884,31 +884,23 @@ form, input {
 .tile-normal.mode-tile.active svg {
   fill: #444; }
 
-.tile-normal.size-tile {
-  height: auto;
-  margin: 7px 0; }
-  .tile-normal.size-tile .circle {
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%;
-    border: 1px solid #444;
-    transition: all 0.15s ease; }
-  .tile-normal.size-tile .circle.active {
-    background-color: #444; }
-  .tile-normal.size-tile:hover .circle {
-    background-color: #444; }
-  .tile-normal.size-tile .circle-small {
-    height: 8px;
-    width: 8px; }
-  .tile-normal.size-tile .circle-normal {
-    height: 12px;
-    width: 12px; }
-  .tile-normal.size-tile .circle-medium {
-    height: 17px;
-    width: 17px; }
-  .tile-normal.size-tile .circle-large {
-    height: 23px;
-    width: 23px; }
+.tile-normal.size-tile#size-s {
+  height: 20px; }
+
+.tile-normal.size-tile#size-n {
+  height: 25px; }
+
+.tile-normal.size-tile#size-m {
+  height: 30px; }
+
+.tile-normal.size-tile#size-l {
+  height: 35px; }
+
+.tile-normal.size-tile svg path.line {
+  display: none; }
+
+.tile-normal.size-tile.active svg path.line {
+  display: inline !important; }
 
 .tile-normal.opacity-tile #o-tl, .tile-normal.opacity-tile #o-l, .tile-normal.opacity-tile #o-bl, .tile-normal.opacity-tile #o-b, .tile-normal.opacity-tile #o-br, .tile-normal.opacity-tile #o-r, .tile-normal.opacity-tile #o-tr, .tile-normal.opacity-tile #o-t {
   display: none; }
@@ -934,7 +926,20 @@ form, input {
     display: inline; }
 
 .tile-normal.layer-tile svg {
-  transition: transform 0.5s ease; }
+  transition: transform 0.2s ease; }
+
+.tile-normal#download #download-cloud {
+  transform: translateY(0); }
+
+.tile-normal#download #download-arrow {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease; }
+
+.tile-normal#download:hover #download-cloud {
+  transform: translateY(1px); }
+
+.tile-normal#download:hover #download-arrow {
+  transform: translateY(2px); }
 
 .modal-window {
   width: 100%;
@@ -964,7 +969,8 @@ form, input {
     width: 120px;
     box-shadow: 2px 2px 10px -6px rgba(0, 0, 0, 0.75); }
 
-#roomname-error {
+#roomname-error,
+#resize-warning {
   color: red;
   padding-bottom: 5px; }
 
@@ -1005,6 +1011,14 @@ form, input {
     #made-by p a {
       pointer-events: initial; }
 
+/*
+  resize warning
+*/
+#resize-warning {
+  position: absolute;
+  top: 5px;
+  right: 10px; }
+
 #trash:hover {
   animation-name: shake;
   animation-duration: 0.15s;
@@ -1024,18 +1038,6 @@ form, input {
 
 .mode-tile:hover {
   transform: translateX(2px);
-  transition: transform 0.3s ease; }
-
-#opacity:hover {
-  animation-name: spin;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; }
-
-@keyframes spin {
-  from {
-    transform: rotate(360deg); }
-  to {
-    transform: rotate(0); } }
+  transition: transform 0.2s ease; }
 
 /*# sourceMappingURL=style.css.map */

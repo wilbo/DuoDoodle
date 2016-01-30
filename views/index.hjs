@@ -2,13 +2,23 @@
 <html>
   <head>
     <title>{{ title }}</title>
+
+    {{!-- css --}}
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:700,400,300' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
+    {{!-- libraries --}}
     <script src="/socket.io/socket.io.js"></script>
 		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="javascripts/paper-full.min.js"></script>
+
+    {{!-- for dowloading to png --}}
+    <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"></script>
+    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
+
+    {{!-- main scriptsfile --}}
     <script type="text/paperscript" src="/javascripts/duodoodle.js" canvas="duodoodle"></script>
+
   </head>
   <body>
 
@@ -46,19 +56,22 @@
       <div class="tile-divider tile-normal"></div>
 
       <div class="size">
-				<div class="size-tile tile-normal"><span class="circle circle-small">&nbsp;</span></div>
-				<div class="size-tile tile-normal"><span class="circle circle-normal active">&nbsp;</span></div>
-				<div class="size-tile tile-normal"><span class="circle circle-medium">&nbsp;</span></div>
-				<div class="size-tile tile-normal"><span class="circle circle-large">&nbsp;</span></div>
+				<div class="size-tile tile-normal" id="size-s">{{> size-sa }}</div>
+				<div class="size-tile tile-normal active" id="size-n">{{> size-na }}</div>
+				<div class="size-tile tile-normal" id="size-m">{{> size-ma }}</div>
+				<div class="size-tile tile-normal" id="size-l">{{> size-la }}</div>
 			</div>
 
       <div class="tile-divider tile-normal"></div>
 
       <div class="clear">
 				<div class="tools-tile tile-normal" id="trash">{{> trash }}</div>
+        <div class="tools-tile tile-normal" id="download">{{> download }}</div>
 			</div>
 
     </div> <!-- /#left-control -->
+
+    <div id="resize-warning"></div>
 
     <div id="room-info">
 			<p><span id="room-name"></span><span id="room-count"></span></p>

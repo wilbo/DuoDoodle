@@ -81,7 +81,7 @@ form, input {
   position: relative;
   left: -20px;
   box-shadow: $shadow;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   &.active {
     transform: translateX(5px);
   }
@@ -104,38 +104,29 @@ form, input {
 }
 
 .tile-normal.size-tile {
-	height: auto;
-	margin: 7px 0;
-	.circle {
-		display: block;
-		margin: 0 auto;
-		border-radius: 50%;
-		border: 1px solid $color;
-    transition: all 0.15s ease;
-	}
-  & .circle.active {
-		background-color: $color;
-	}
-	&:hover .circle {
-		background-color: $hover;
-	}
-	.circle-small {
-		height: 8px;
-		width: 8px;
-	}
-	.circle-normal {
-		height: 12px;
-		width: 12px;
-	}
-	.circle-medium {
-		height: 17px;
-		width: 17px;
-	}
-	.circle-large {
-		height: 23px;
-		width: 23px;
-	}
+  &#size-s {
+    height: 20px;
+  }
+  &#size-n {
+    height: 25px;
+  }
+  &#size-m {
+    height: 30px;
+  }
+  &#size-l {
+    height: 35px;
+  }
+  svg path.line {
+    display: none;
+  }
+  &.active svg path.line {
+    display: inline !important;
+  }
+
+
 }
+
+
 
 // opacity
 .tile-normal.opacity-tile {
@@ -173,11 +164,29 @@ form, input {
 .tile-normal.layer-tile {
 	svg {
 		//transform: rotateX(180deg);
-		transition: transform 0.5s ease;
+		transition: transform 0.2s ease;
 	}
 	&:hover svg {
 		//transform: rotateX(0);
 	}
+}
+
+.tile-normal#download {
+  #download-cloud {
+      transform: translateY(0);
+  }
+  #download-arrow {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+  &:hover {
+    #download-cloud {
+      transform: translateY(1px);
+    }
+    #download-arrow {
+      transform: translateY(2px);
+    }
+  }
 }
 
 
@@ -216,7 +225,8 @@ form, input {
 	}
 }
 
-#roomname-error {
+#roomname-error,
+#resize-warning {
 	color: red;
 	padding-bottom: 5px;
 }
@@ -267,6 +277,16 @@ form, input {
 	}
 }
 
+/*
+  resize warning
+*/
+
+#resize-warning {
+  position: absolute;
+  top: 5px;
+  right: 10px
+}
+
 
 // animations
 #trash:hover {
@@ -285,17 +305,17 @@ form, input {
 
 .mode-tile:hover {
   transform: translateX(2px);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
-#opacity:hover {
-	animation-name: spin;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes spin {
-    from {transform: rotate(360deg);}
-    to {transform: rotate(0);}
-}
+// #opacity:hover {
+// 	animation-name: spin;
+//   animation-duration: 4s;
+//   animation-iteration-count: infinite;
+//   animation-timing-function: linear;
+// }
+//
+// @keyframes spin {
+//     from {transform: rotate(360deg);}
+//     to {transform: rotate(0);}
+// }

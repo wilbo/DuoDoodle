@@ -1,6 +1,10 @@
-var socket = io();
-var socketId;
 
+// get connection
+var socket = io();
+
+// local user data
+var socketId;
+var canvasName;
 
 // store our path(s)
 var paths = {};
@@ -13,7 +17,9 @@ var settings = {
   'opacity': 1
 };
 
-// drawing functions
+/*
+  Drawing functions
+*/
 
 function startPath(settings, position, socketId) {
 
@@ -44,7 +50,9 @@ function endPath(position, socketId) {
 }
 
 
-// socket drawing
+/*
+  this socket drawing
+*/
 
 function onMouseDown(event) {
 
@@ -69,8 +77,9 @@ function onMouseUp(event) {
 
 
 
-
-// 'other' sockets drawing
+/*
+  'other' sockets drawing
+*/
 
 socket.on('startPath', function(settings, position, socketId) {
 
@@ -114,7 +123,9 @@ socket.on('endPath', function(position, socketId) {
 
 
 
-// settings
+/*
+  Load settings function
+*/
 
 function loadSettings(obj, paths, socketId) {
 
@@ -128,6 +139,7 @@ function loadSettings(obj, paths, socketId) {
     paths[socketId].opacity = 1;
     $('#opacity span').removeClass();
     $('#opacity span').addClass('op100');
+    $('.colors').css('opacity', '1');
 
   } else if (obj['mode'] == 'layer') {
     paths[socketId].blendMode = "destination-over";
@@ -137,12 +149,15 @@ function loadSettings(obj, paths, socketId) {
 
 }
 
+/*
+  Jquery stuff
+*/
 
 $(document).ready(function() {
 
-
-
-  // room joiningrequest to make/join room
+  /*
+    room joiningrequest to make/join room
+  */
 
   $('#room-form').submit(function(e) {
     e.preventDefault();
@@ -159,6 +174,7 @@ $(document).ready(function() {
   socket.on('joinRoom', function(roomName) {
 
     socketId = socket.id;
+    canvasName = roomName;
 
    // remove the welcome box
    $('#join-room-window').fadeOut(200).remove();
@@ -183,7 +199,9 @@ $(document).ready(function() {
 
 
 
-  // settings and tools and stuff
+  /*
+    settings and tools and stuff
+  */
 
   // change color
   $('.color-tile').click(function() {
@@ -221,13 +239,33 @@ $(document).ready(function() {
     project.clear();
   });
 
+  // download canvas png
+  $('#download').click(function() {
+    paper.view.draw();
+    paper.view.element.toBlob(function(blob) { saveAs(blob, canvasName + '.png');});
+  });
+
   // change size
   $('.size-tile').click(function() {
-    var size = $(this).find('.circle').css('height');
-    settings['size'] = parseInt(size);
 
-    $('.circle').removeClass('active');
-    $(this).find('.circle').addClass('active');
+    var tile = $(this).attr('id');
+
+    $('.size-tile').removeClass('active');
+
+    if (tile == 'size-s') {
+      $(this).addClass('active');
+      settings['size'] = 5;
+    } else if (tile == 'size-n') {
+      $(this).addClass('active');
+      settings['size'] = 10;
+    } else if (tile == 'size-m') {
+      $(this).addClass('active');
+      settings['size'] = 17;
+    } else if (tile == 'size-l') {
+      $(this).addClass('active');
+      settings['size'] = 25;
+    }
+
   });
 
   // change opacity
@@ -254,8 +292,6 @@ $(document).ready(function() {
       settings['opacity'] = 1;
       $('.colors').css('opacity', '1');
     }
-
-
 
   });
 
@@ -290,6 +326,21 @@ $(document).ready(function() {
     }
   });
 
+
+  /*
+    misc
+  */
+
+  // window resize warning
+  $( window ).resize(function() {
+    $( "#resize-warning" ).html("You resized the page. Reload it for more accurate drawing.");
+  });
+
+  // confirm close window
+  // window.onbeforeunload = confirmExit;
+  // function confirmExit() {
+  //   return "Are you sure you want to close your canvas?";
+  // }
 
 
 
