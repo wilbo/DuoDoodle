@@ -15,13 +15,13 @@ io.on('connection', function(socket) {
 
   	// roomname validation. checks for empty, length, symbols, or if already taken.
   	if (roomName == '') {
-  		io.to(socket.id).emit('roomNameError', 'please submit a roomname');
+  		io.to(socket.id).emit('roomNameError', 'please name your canvas');
   	} else if (roomName.length > 16) {
-  		io.to(socket.id).emit('roomNameError', 'The roomname you provided is too long.');
+  		io.to(socket.id).emit('roomNameError', 'The name you provided is too long.');
   	} else if (containsSymbol(roomName)) {
-  		io.to(socket.id).emit('roomNameError', 'Your roomname may only contain letters and numbers.');
-  	} else if (getSocketCountInRoom(roomName) >= 2) {
-  		io.to(socket.id).emit('roomNameError', 'Sorry, this room is full');
+  		io.to(socket.id).emit('roomNameError', 'Your canvas name may only contain letters and numbers.');
+  	} else if (getSocketCountInRoom(roomName) >= 5) {
+  		io.to(socket.id).emit('roomNameError', 'Sorry, this canvas is too busy');
   	} else {
 
   		// let user join room

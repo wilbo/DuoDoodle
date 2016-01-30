@@ -71,17 +71,10 @@
     <!-- joining modal -->
     <div class="modal-window" id="join-room-window">
 
-			<div id="disclaimer">
-				<h3>Disclaimer:</h3>
-				<p>This webapp is currently in beta.</p>
-				<p>If you come across any disappointments let me know!</p>
-				<p><a href="mailto:hello@wilbo.io">hello@wilbo.io</a></p>
-			</div>
-
 			<div class="modal" id="join-room">
 
 				<h5>Welcome to DuoDoodle!</h5>
-				<p>Create a canvas to start drawing. Dont forget to share the name fo your canvas with a friend.</p>
+				<p>Create a canvas to start drawing. Dont forget to share the name of your canvas with a friend.</p>
 
 				<form action="" id="room-form">
             <input type="text" id="room-input" autocomplete="off" maxlength="17" autofocus placeholder="name your canvas" />
