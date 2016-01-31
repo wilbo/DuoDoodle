@@ -18,7 +18,10 @@ router.get('/', function(req, res, next) {
         'size-sa': 'icon-size-sa.svg',
         'size-na': 'icon-size-na.svg',
         'size-ma': 'icon-size-ma.svg',
-        'size-la': 'icon-size-la.svg'
+        'size-la': 'icon-size-la.svg',
+        'svg': 'icon-svg.svg',
+        'png': 'icon-png.svg',
+        'hide-ui': 'icon-hide-ui.svg'
       }
     });
 });

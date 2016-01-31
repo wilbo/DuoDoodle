@@ -135,11 +135,7 @@ function loadSettings(obj, paths, socketId) {
 
   if (obj['mode'] == 'erase') {
     paths[socketId].blendMode = 'destination-out';
-
     paths[socketId].opacity = 1;
-    $('#opacity span').removeClass();
-    $('#opacity span').addClass('op100');
-    $('.colors').css('opacity', '1');
 
   } else if (obj['mode'] == 'layer') {
     paths[socketId].blendMode = "destination-over";
@@ -203,20 +199,43 @@ $(document).ready(function() {
     settings and tools and stuff
   */
 
+  // hide/show ui
+  $('#hide-ui').click(function() {
+    $(this).toggleClass('hidden');
+    $('#top-control, #left-control').toggleClass('hidden');
+    $('.tile-option').fadeOut(200);
+  });
+
+  var color;
+
+  function updateActiveColor(clr) {
+    // change active color
+    $('.mode-tile svg path').css('fill', '');
+    $('.size-tile svg path').css('fill', '');
+
+    $('.mode-tile.active svg path').css('fill', clr);
+    $('.size-tile.active svg path').css('fill', clr);
+  }
+
   // change color
   $('.color-tile').click(function() {
 
-    var color = $(this).css('background-color');
+    color = $(this).css('background-color');
     settings['color'] = color;
 
     $('.color-tile').removeClass('active');
     $(this).addClass('active');
+
+    updateActiveColor(color);
+
+
 
     // change to pen id erase was selected
     if (settings['mode'] == 'erase') {
       settings['mode'] = 'pen';
       $('#erase').removeClass('active');
       $('#pen').addClass('active');
+      updateActiveColor(color);
     }
 
   });
@@ -228,21 +247,38 @@ $(document).ready(function() {
 
     $('.mode-tile').removeClass('active');
     $(this).addClass('active');
+
+    updateActiveColor(color);
+
+    if (mode == 'erase') {
+      $('.color-tile.active').css('transform', 'translateY(0)');
+    } else {
+      $('.color-tile.active').css('transform', 'translateY(4px)');
+    }
+
   });
 
   // trash/clear canvas
   $('#trash').click(function() {
-    socket.emit("clearCanvas");
+    project.clear();
   });
 
-  socket.on('clearCanvas', function() {
-    project.clear();
+  // hide all option tiles when drawing
+  $('body').mousedown(function() {
+    $('.tile-option').fadeOut(200);
   });
 
   // download canvas png
   $('#download').click(function() {
-    paper.view.draw();
+    $('#option-png, #option-svg').fadeToggle(200);
+  });
+
+  $('#option-png').click(function() {
     paper.view.element.toBlob(function(blob) { saveAs(blob, canvasName + '.png');});
+  });
+
+  $('#option-svg').click(function() {
+    downloadAsSVG(canvasName);
   });
 
   // change size
@@ -265,6 +301,8 @@ $(document).ready(function() {
       $(this).addClass('active');
       settings['size'] = 25;
     }
+
+    updateActiveColor(color);
 
   });
 
@@ -342,6 +380,21 @@ $(document).ready(function() {
   //   return "Are you sure you want to close your canvas?";
   // }
 
+  //Save SVG from paper.js as a file.
+  var downloadAsSVG = function (fileName) {
+
+    //currently name doesn't seem to work in some browsers.
+     if(!fileName) {
+         fileName = "my_duodoodle.svg";
+     }
+
+     var url = "data:image/svg+xml;utf8," + encodeURIComponent(paper.project.exportSVG({asString:true}));
+
+     var link = document.createElement("a");
+     link.download = fileName;
+     link.href = url;
+     link.click();
+  }
 
 
 

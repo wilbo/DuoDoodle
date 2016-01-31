@@ -24,22 +24,28 @@
 
     <canvas id="duodoodle"></canvas>
 
-    <div id="left-control">
+    <div id="top-left-control">
+      <div class="tile-normal" id="hide-ui">{{> hide-ui }}</div>
+    </div>
+
+    <div id="top-control">
 
       <div class="colors">
-				<div class="color-tile tile-normal active" style="background-color:rgba(0,0,0,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(150,150,150,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(244, 67, 54,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(76, 175, 80,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(33, 150, 243,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(255, 193, 7,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(156, 39, 176,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(233, 30, 99,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(121, 85, 72,1);">&nbsp;</div>
-				<div class="color-tile tile-normal" style="background-color:rgba(239,208,207,1);">&nbsp;</div>
+				<div class="color-tile tile-normal active" style="background-color:rgba(0,0,0,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(150,150,150,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(244, 67, 54,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(76, 175, 80,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(33, 150, 243,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(255, 193, 7,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(156, 39, 176,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(233, 30, 99,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(121, 85, 72,1);"></div>
+				<div class="color-tile tile-normal" style="background-color:rgba(239,208,207,1);"></div>
 			</div>
 
-      <div class="tile-divider tile-normal"></div>
+    </div>
+
+    <div id="left-control">
 
 			<div class="mode">
 				<div class="mode-tile tile-normal active" id="pen" >{{> pen }}</div>
@@ -66,7 +72,11 @@
 
       <div class="clear">
 				<div class="tools-tile tile-normal" id="trash">{{> trash }}</div>
-        <div class="tools-tile tile-normal" id="download">{{> download }}</div>
+        <div class="options">
+          <div class="tools-tile tile-normal option-trigger" id="download">{{> download }}</div>
+          <div class="tile-option tile-normal option-one" id="option-png">{{> png }}</div>
+          <div class="tile-option tile-normal option-two" id="option-svg">{{> svg }}</div>
+        </div>
 			</div>
 
     </div> <!-- /#left-control -->
@@ -78,7 +88,7 @@
 		</div>
 
 		<div id="made-by">
-        <p>Made with <a href="https://nodejs.org/" target="_blank">node.js</a>. <a href="http://expressjs.com/" target="_blank">express</a> and <a href="http://socket.io/" target="_blank">socket.io</a> by <a href="http://wilbo.io/" target="_blank">wilbo</a>. </p>
+        <p>Made by <a href="http://wilbo.io/" target="_blank">wilbo</a>. </p>
     </div>
 
     <!-- joining modal -->
