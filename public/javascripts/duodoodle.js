@@ -13,6 +13,7 @@ var paths = {};
 var settings = {
   'color': 'rgba(0,0,0,1)',
   'mode': 'pen',
+  'layer': 'above',
   'size': 10,
   'opacity': 1
 };
@@ -44,7 +45,12 @@ function continuePath(position, socketId) {
 function endPath(position, socketId) {
 
   paths[socketId].add(position);
-  paths[socketId].smooth();
+
+  // only smooth path when drawing, erasing should be precise
+  if (settings['mode'] != 'erase') {
+      paths[socketId].simplify();
+  }
+
   delete paths[socketId]
 
 }
@@ -61,10 +67,24 @@ function onMouseDown(event) {
 
 }
 
+var wait = false;
+var throttling = 30;
+
 function onMouseDrag(event) {
 
+
   continuePath(event.point, socketId);
-  socket.emit("continuePath", event.point, socketId);
+
+  // throttle the emit for performance
+  if(!wait){
+
+    socket.emit("continuePath", event.point, socketId);
+
+    wait = true;
+    setTimeout(function(){
+      wait = false;
+    }, throttling);
+  }
 
 }
 
@@ -134,13 +154,19 @@ function loadSettings(obj, paths, socketId) {
   paths[socketId].opacity = obj['opacity'];
 
   if (obj['mode'] == 'erase') {
+
     paths[socketId].blendMode = 'destination-out';
     paths[socketId].opacity = 1;
 
-  } else if (obj['mode'] == 'layer') {
-    paths[socketId].blendMode = "destination-over";
-  } else {
-    paths[socketId].blendMode = 'normal';
+  } else if (obj['mode'] == 'pen') {
+
+    // mode pen has 2 versions, above and under
+    if (obj['layer'] == 'above') {
+      paths[socketId].blendMode = 'normal';
+    } else {
+      paths[socketId].blendMode = "destination-over";
+    }
+
   }
 
 }
@@ -176,9 +202,6 @@ $(document).ready(function() {
    $('#join-room-window').fadeOut(200).remove();
    $('#room-name').html('Canvas name: <b>' + roomName + '</b>. ');
 
-  //  if (state) {
-  //    restoreSingleState(canvas, ctx, state);
-  //  }
 
   });
 
@@ -229,7 +252,6 @@ $(document).ready(function() {
     updateActiveColor(color);
 
 
-
     // change to pen id erase was selected
     if (settings['mode'] == 'erase') {
       settings['mode'] = 'pen';
@@ -242,6 +264,7 @@ $(document).ready(function() {
 
   // change mode
   $('.mode-tile').click(function() {
+
     var mode = $(this).attr('id');
     settings['mode'] = mode;
 
@@ -249,12 +272,6 @@ $(document).ready(function() {
     $(this).addClass('active');
 
     updateActiveColor(color);
-
-    if (mode == 'erase') {
-      $('.color-tile.active').css('transform', 'translateY(0)');
-    } else {
-      $('.color-tile.active').css('transform', 'translateY(4px)');
-    }
 
   });
 
@@ -337,17 +354,18 @@ $(document).ready(function() {
   $('#layer').click(function() {
 
     if ($(this).hasClass('under')) {
-      settings['mode'] = 'pen';
+      settings['layer'] = 'above';
       $(this).removeClass('under');
       $(this).addClass('above');
     } else {
-      settings['mode'] = 'layer';
+      settings['layer'] = 'under';
       $(this).addClass('under');
       $(this).removeClass('above');
     }
 
   });
 
+  // layer tile animations
   $('#layer').mouseenter(function() {
     if ($(this).hasClass('under')) {
       $('#layer svg').css('transform', 'rotateX(0deg)');
@@ -380,7 +398,7 @@ $(document).ready(function() {
   //   return "Are you sure you want to close your canvas?";
   // }
 
-  //Save SVG from paper.js as a file.
+  // download as svg
   var downloadAsSVG = function (fileName) {
 
     //currently name doesn't seem to work in some browsers.
