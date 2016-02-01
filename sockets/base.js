@@ -13,6 +13,8 @@ io.on('connection', function(socket) {
 
   socket.on('joinReq', function(roomName) {
 
+    roomName = roomName.toLowerCase();
+
   	// roomname validation. checks for empty, length, symbols, or if already taken.
   	if (roomName == '') {
   		io.to(socket.id).emit('roomNameError', 'please name your canvas');

@@ -293,6 +293,7 @@ $(document).ready(function() {
   });
 
   $('#option-png').click(function() {
+    paper.view.draw();
     paper.view.element.toBlob(function(blob) { saveAs(blob, canvasName + '.png');});
   });
 
