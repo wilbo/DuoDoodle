@@ -860,6 +860,11 @@ form {
   #top-left-control #hide-ui.hidden svg {
     transform: rotateX(180deg) rotateY(180deg); }
 
+@media (max-width: 500px) {
+  #hide-ui {
+    width: 40px;
+    height: 40px; } }
+
 #top-control {
   height: 40px;
   position: absolute;
@@ -868,6 +873,15 @@ form {
   transition: transform 0.5s ease-out; }
   #top-control.hidden {
     transform: translateY(-100px); }
+
+@media (max-width: 500px) {
+  #top-control {
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .colors {
+    float: right; } }
 
 #left-control {
   width: 40px;
@@ -916,17 +930,28 @@ form {
   .tile-normal.color-tile:hover {
     transform: translateY(8px); }
 
-@media (max-width: 300px) {
+@media (max-width: 290px) {
+  #top-control {
+    display: none; } }
+
+@media (max-width: 319px) {
   #gray, #purple, #pink, #brown {
     display: none; } }
 
-@media (max-width: 400px) {
+@media (max-width: 370px) {
   #gray, #purple, #pink {
+    display: none; } }
+
+@media (max-width: 400px) {
+  .tile-normal.color-tile {
+    width: 37px !important; }
+  #gray, #pink {
     display: none; } }
 
 @media (max-width: 500px) {
   .tile-normal.color-tile {
-    top: -10px; } }
+    top: -10px;
+    width: 34px; } }
 
 .tile-normal.mode-tile {
   height: 25px; }

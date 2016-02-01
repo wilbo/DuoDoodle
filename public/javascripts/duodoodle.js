@@ -279,6 +279,7 @@ $(document).ready(function() {
   // trash/clear canvas
   $('#trash').click(function() {
     project.clear();
+    paper.view.draw();
   });
 
   // hide all option tiles when drawing

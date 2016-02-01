@@ -102,7 +102,7 @@
 
 				<form action="" id="room-form">
             <input type="text" id="room-input" autocomplete="off" maxlength="17" autofocus placeholder="name your canvas" />
-            <button type="submit" class="button">Start drawing</button>
+            <button type="submit" class="button">Start doodling</button>
             <div id="roomname-error"></div>
         </form>
 
