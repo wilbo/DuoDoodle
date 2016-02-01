@@ -226,6 +226,7 @@ $(document).ready(function() {
   $('#hide-ui').click(function() {
     $(this).toggleClass('hidden');
     $('#top-control, #left-control').toggleClass('hidden');
+    $('#room-info').toggleClass('hidden');
     $('.tile-option').fadeOut(200);
   });
 

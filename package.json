@@ -1,6 +1,8 @@
 {
-  "name": "paperdoodle",
-  "version": "0.0.0",
+  "name": "duodoodle",
+  "description": "A social drawing app",
+  "author": "Wilbert Schepenaar <hello@wilbo.io>",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

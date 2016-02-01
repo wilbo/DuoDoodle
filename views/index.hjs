@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{!-- css --}}
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:700,400,300' rel='stylesheet' type='text/css'>
@@ -31,16 +32,16 @@
     <div id="top-control">
 
       <div class="colors">
-				<div class="color-tile tile-normal active" style="background-color:rgba(0,0,0,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(150,150,150,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(244, 67, 54,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(76, 175, 80,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(33, 150, 243,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(255, 193, 7,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(156, 39, 176,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(233, 30, 99,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(121, 85, 72,1);"></div>
-				<div class="color-tile tile-normal" style="background-color:rgba(239,208,207,1);"></div>
+				<div class="color-tile tile-normal active" id="black" style="background-color:rgba(0,0,0,1);"></div>
+				<div class="color-tile tile-normal" id="gray" style="background-color:rgba(150,150,150,1);"></div>
+				<div class="color-tile tile-normal" id="red" style="background-color:rgba(244, 67, 54,1);"></div>
+				<div class="color-tile tile-normal" id="green" style="background-color:rgba(76, 175, 80,1);"></div>
+				<div class="color-tile tile-normal" id="blue" style="background-color:rgba(33, 150, 243,1);"></div>
+				<div class="color-tile tile-normal" id="yellow" style="background-color:rgba(255, 193, 7,1);"></div>
+				<div class="color-tile tile-normal" id="purple" style="background-color:rgba(156, 39, 176,1);"></div>
+				<div class="color-tile tile-normal" id="pink" style="background-color:rgba(233, 30, 99,1);"></div>
+				<div class="color-tile tile-normal" id="brown" style="background-color:rgba(121, 85, 72,1);"></div>
+				<div class="color-tile tile-normal" id="blank" style="background-color:rgba(239,208,207,1);"></div>
 			</div>
 
     </div>

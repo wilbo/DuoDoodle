@@ -36,7 +36,7 @@ body {
   background-image: url(/images/linedpaper.png);
 }
 
-form, input {
+form {
   margin: 0;
 }
 
@@ -69,12 +69,12 @@ form, input {
 
 // top control panel
 #top-control {
-  width: 100%;
+  //width: 100%;
   height: 40px;
-  margin: 0 0 0 60px;
+  //padding: 0 0 0 60px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 60px;
   transition: transform 0.5s ease-out;
   &.hidden {
     transform: translateY(-100px);
@@ -84,11 +84,11 @@ form, input {
 // left control panel
 #left-control {
   width: 40px;
-  height: 100%;
-  margin: 50px 0 0 5px;
+  //height: 100%;
+  //padding: 50px 0 0 5px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 5px;
   transition: transform 0.5s ease-out;
   &.hidden {
     transform: translateX(-100px);
@@ -103,10 +103,6 @@ form, input {
   width: 30px;
   height: 30px;
   cursor: pointer;
-}
-
-.tile-large {
-
 }
 
 .tile-divider {
@@ -146,6 +142,24 @@ form, input {
   }
   &:hover {
     transform: translateY(8px);
+  }
+}
+
+@media (max-width: 300px) {
+  #gray, #purple, #pink, #brown {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  #gray, #purple, #pink {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .tile-normal.color-tile {
+    top: -10px;
   }
 }
 
@@ -249,6 +263,7 @@ form, input {
 .modal-window {
 	width: 100%;
 	height: 100%;
+  padding: 10px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -257,26 +272,38 @@ form, input {
 }
 
 .modal {
-	width: 400px;
 	margin: 0 auto;
 	padding: 20px 20px 5px 20px;
 	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 5%;
 	border-radius: 3px;
 	background-color: #fff;
 	box-shadow: $shadow;
-  p {
-    margin-bottom: 10px;
+  input {
+    width: 100%;
+    box-shadow: $shadow;
   }
-	input {
-		width: 230px;
+  button {
+    width: 100%;
     box-shadow: $shadow;
-	}
-	button {
-		width: 120px;
-    box-shadow: $shadow;
-	}
+  }
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 550px) {
+  .modal {
+  	width: 400px;
+    top: 50%;
+    transform: translateY(-50%);
+    input {
+      width: 230px;
+    }
+    button {
+      width: 120px;
+    }
+  }
 }
 
 #roomname-error,
@@ -308,9 +335,16 @@ form, input {
 	bottom: 7px;
 	left: 10px;
 	font-size: 80%;
+  transition: transform 0.5s ease-out;
 	p {
 		margin: 0;
 	}
+}
+
+@media (max-width: 500px) {
+  #room-info.hidden {
+    transform: translateY(100px);
+  }
 }
 
 /*
@@ -318,6 +352,7 @@ form, input {
 */
 
 #made-by {
+  display: none;
 	position: absolute;
 	bottom: 7px;
 	right: 10px;
@@ -331,6 +366,12 @@ form, input {
 	}
 }
 
+@media (min-width: 500px) {
+  #made-by {
+    display: inline;
+  }
+}
+
 /*
   resize warning
 */
@@ -339,6 +380,12 @@ form, input {
   position: absolute;
   top: 5px;
   right: 10px
+}
+
+@media (max-width: 500px) {
+  #resize-warning {
+    display: none;
+  }
 }
 
 
