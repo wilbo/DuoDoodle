@@ -1,12 +1,12 @@
-# DuoDoodle
+### DuoDoodle
 
-This is a realtime social drawing app made with [express](http://expressjs.com/), [socket.io](http://socket.io) and [paper.js](http://paperjs.org/). In this app your able to draw with your friends on one canvas. 
+With this app, you are able to make your own canvas to doodle on. If you share your canvas name, your friend can join in. Though, chances are your friend will screw up your drawing, so be careful of who you invite...
 
-click [here](http://duodoodle.wilbo.io) to release your inner doodler :)
+Made with [nodejs](https://nodejs.org/en/), [express](http://expressjs.com/), [socket.io](http://socket.io/) and [paper.js](http://paperjs.org/)<br>
+Project: [duodoodle.wilbo.io](http://duodoodle.wilbo.io). <br>
 
-or,
 
-if you are in a developing mood, fire it up locally by doing:
+If you are in a developing mood, fire it up locally by doing:
 
     $ git clone https://github.com/wilbo/duodoodle.git
     $ cd duodoodle
