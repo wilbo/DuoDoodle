@@ -68,7 +68,7 @@ function onMouseDown(event) {
 }
 
 var wait = false;
-var throttling = 30;
+var throttling = 10;
 
 function onMouseDrag(event) {
 
@@ -177,20 +177,17 @@ function loadSettings(obj, paths, socketId) {
 
 $(document).ready(function() {
 
+
+  // join room on ready
+
+  var path = window.location.pathname;
+  var roomName = path.substring(3);
+
+  socket.emit('joinReq', roomName);
+
   /*
     room joiningrequest to make/join room
   */
-
-  $('#room-form').submit(function(e) {
-    e.preventDefault();
-
-    // retrieve username from username input field
-    var roomName = $('#room-input').val();
-    // send a join request
-    socket.emit('joinReq', roomName);
-
-    return false;
-  });
 
   // response to make/join room
   socket.on('joinRoom', function(roomName) {
@@ -209,9 +206,6 @@ $(document).ready(function() {
     $('#room-count').html('People here: <b>' + amountInRoom + '</b>.');
   });
 
-  socket.on('roomNameError', function(errorMessage) {
-    $('#roomname-error').html(errorMessage);
-  });
 
 
 

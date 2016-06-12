@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>{{ title }} | Doodle better together</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,103 +13,28 @@
     {{!-- libraries --}}
     <script src="/socket.io/socket.io.js"></script>
 		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script type="text/javascript" src="javascripts/paper-full.min.js"></script>
-
-    {{!-- for dowloading to png --}}
-    <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"></script>
-    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
 
     {{!-- main scriptsfile --}}
-    <script type="text/paperscript" src="/javascripts/duodoodle.js" canvas="duodoodle"></script>
+    <script src="/javascripts/index.js"></script>
 
   </head>
   <body>
 
-    <canvas id="duodoodle"></canvas>
-
-    <div id="top-left-control">
-      <div class="tile-normal" id="hide-ui">{{> hide-ui }}</div>
-    </div>
-
-    <div id="top-control">
-
-      <div class="colors">
-				<div class="color-tile tile-normal active" id="black" style="background-color:rgba(0,0,0,1);"></div>
-				<div class="color-tile tile-normal" id="gray" style="background-color:rgba(150,150,150,1);"></div>
-				<div class="color-tile tile-normal" id="red" style="background-color:rgba(244, 67, 54,1);"></div>
-				<div class="color-tile tile-normal" id="green" style="background-color:rgba(76, 175, 80,1);"></div>
-				<div class="color-tile tile-normal" id="blue" style="background-color:rgba(33, 150, 243,1);"></div>
-				<div class="color-tile tile-normal" id="yellow" style="background-color:rgba(255, 193, 7,1);"></div>
-				<div class="color-tile tile-normal" id="purple" style="background-color:rgba(156, 39, 176,1);"></div>
-				<div class="color-tile tile-normal" id="pink" style="background-color:rgba(233, 30, 99,1);"></div>
-				<div class="color-tile tile-normal" id="brown" style="background-color:rgba(121, 85, 72,1);"></div>
-				<div class="color-tile tile-normal" id="blank" style="background-color:rgba(239,208,207,1);"></div>
-			</div>
-
-    </div>
-
-    <div id="left-control">
-
-			<div class="mode">
-				<div class="mode-tile tile-normal active" id="pen" >{{> pen }}</div>
-				<div class="mode-tile tile-normal" id="erase" >{{> eraser }}</div>
-			</div>
-
-      <div class="tile-divider tile-normal"></div>
-
-      <div class="tools">
-				<div class="opacity-tile tile-normal" id="opacity"><span class="op100">{{> opacity }}</span></div>
-        <div class="layer-tile tile-normal above" id="layer" >{{> layer }}</div>
-			</div>
-
-      <div class="tile-divider tile-normal"></div>
-
-      <div class="size">
-				<div class="size-tile tile-normal" id="size-s">{{> size-sa }}</div>
-				<div class="size-tile tile-normal active" id="size-n">{{> size-na }}</div>
-				<div class="size-tile tile-normal" id="size-m">{{> size-ma }}</div>
-				<div class="size-tile tile-normal" id="size-l">{{> size-la }}</div>
-			</div>
-
-      <div class="tile-divider tile-normal"></div>
-
-      <div class="clear">
-				<div class="tools-tile tile-normal" id="trash">{{> trash }}</div>
-        <div class="options">
-          <div class="tools-tile tile-normal option-trigger" id="download">{{> download }}</div>
-          <div class="tile-option tile-normal option-one" id="option-png">{{> png }}</div>
-          <div class="tile-option tile-normal option-two" id="option-svg">{{> svg }}</div>
-        </div>
-			</div>
-
-    </div> <!-- /#left-control -->
-
-    <div id="resize-warning"></div>
-
-    <div id="room-info">
-			<p><span id="room-name"></span><span id="room-count"></span></p>
-		</div>
-
-		<div id="made-by">
-        <p>Made by <a href="http://wilbo.io/" target="_blank">wilbo</a>. </p>
-    </div>
-
-    <!-- joining modal -->
     <div class="modal-window" id="join-room-window">
 
-			<div class="modal" id="join-room">
+      <div class="modal" id="join-room">
 
-				<h5>Welcome to DuoDoodle!</h5>
-				<p>Create a canvas to start drawing. Dont forget to share the name of your canvas with a friend.</p>
+        <h5>Welcome to DuoDoodle!</h5>
+        <p>Create a canvas to start doodling. Share your canvas-name with a friend to start doodling together.</p>
 
-				<form action="" id="room-form">
+        <form action="" id="room-form">
             <input type="text" id="room-input" autocomplete="off" maxlength="17" autofocus placeholder="name your canvas" />
             <button type="submit" class="button">Start doodling</button>
             <div id="roomname-error"></div>
         </form>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
   </body>
 </html>
