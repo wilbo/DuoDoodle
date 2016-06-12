@@ -1,6 +1,5 @@
 $(document).ready(function() {
-
-
+  
   $('#room-form').submit(function(e) {
     e.preventDefault();
 
