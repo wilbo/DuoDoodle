@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     // redirect to canvas
     var original = window.location.toString();
-    window.location.href = original + 'r/' + roomName;
+    window.location.href = original + roomName;
 
     return false;
   });

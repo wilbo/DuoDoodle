@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
 		if (rooms.indexOf(roomName) == -1) {
 
       // joining new room
-      console.log('joining new room');
+      console.log('joining new room: ' + roomName);
 
 			// making new room
 			rooms.push(roomName);
@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
 		} else {
 
 			// joining existing room
-			console.log('joining existing room');
+			console.log('joining existing room: ' + roomName);
 
     	// give user acces to room
 			io.to(socket.id).emit('joinRoom', roomName);

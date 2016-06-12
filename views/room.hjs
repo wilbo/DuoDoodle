@@ -14,7 +14,8 @@
     <script src="/socket.io/socket.io.js"></script>
 		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <!-- <script type="text/javascript" src="javascripts/paper-full.min.js"></script> -->
-    <script type="text/javascript" src="{{ paperLocation }}paper-full.min.js"></script>
+    <script type="text/javascript" src="/javascripts/paper-full.min.js"></script>
+    <script type="text/javascript" src="/javascripts/clipboard.min.js"></script>
 
     {{!-- for dowloading to png --}}
     <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"></script>
@@ -93,6 +94,17 @@
 
 		<div id="made-by">
         <p>Made by <a href="http://wilbo.io/" target="_blank">wilbo</a>. </p>
+    </div>
+
+    <div class="modal-window copy-url-modal" id="">
+
+      <div class="modal" id="">
+        <h5>Copy & Share this Link!</h5>
+        <input type="text" id="room-url" readonly/>
+        <div id="url-button">
+          <button class="button" id="copy-url" data-clipboard-target="#room-url">Copy</button>
+        </div>
+      </div>
     </div>
 
   </body>

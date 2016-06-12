@@ -321,8 +321,22 @@ form {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0,0.85);
+  background:
+	linear-gradient(cyan, transparent),
+	linear-gradient(-45deg, magenta, transparent),
+	linear-gradient(45deg, yellow, transparent);
+  background-blend-mode: multiply;
 	z-index: 50;
+}
+
+.modal-window.copy-url-modal {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  background-blend-mode: normal;
+
+  input {
+    width: 100%;
+  }
 }
 
 .modal {
@@ -332,7 +346,7 @@ form {
 	top: 5%;
 	border-radius: 3px;
 	background-color: #fff;
-	box-shadow: $shadow;
+	box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
   input {
     width: 100%;
     box-shadow: $shadow;

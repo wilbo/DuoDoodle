@@ -175,19 +175,32 @@ function loadSettings(obj, paths, socketId) {
   Jquery stuff
 */
 
+
+
 $(document).ready(function() {
 
 
-  // join room on ready
+  /*
+      copy room url
+  */
 
-  var path = window.location.pathname;
-  var roomName = path.substring(3);
+  $('#room-url').val(window.location.host + window.location.pathname);
 
-  socket.emit('joinReq', roomName);
+  var clipboard = new Clipboard('#copy-url');
+
+  clipboard.on('success', function(e) {
+
+    $(e.trigger).parent().html('<h5 style="color:rgba(233, 30, 99,1);">Happy Doodling!</h5>');
+    $('.copy-url-modal').fadeOut(1000);
+  });
 
   /*
     room joiningrequest to make/join room
   */
+
+  // get the roomname from url
+  var roomName = window.location.pathname;
+  socket.emit('joinReq', roomName);
 
   // response to make/join room
   socket.on('joinRoom', function(roomName) {
@@ -196,7 +209,6 @@ $(document).ready(function() {
     canvasName = roomName;
 
    // remove the welcome box
-   $('#join-room-window').fadeOut(200).remove();
    $('#room-name').html('Canvas name: <b>' + roomName + '</b>. ');
 
 
@@ -385,9 +397,9 @@ $(document).ready(function() {
   */
 
   // window resize warning
-  $( window ).resize(function() {
-    $( "#resize-warning" ).html("You resized the page. Reload it for more accurate drawing.");
-  });
+  // $( window ).resize(function() {
+  //   $( "#resize-warning" ).html("You resized the page. Reload it for more accurate drawing.");
+  // });
 
   // confirm close window
   // window.onbeforeunload = confirmExit;

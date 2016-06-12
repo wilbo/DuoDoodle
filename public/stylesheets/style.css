@@ -1034,8 +1034,16 @@ form {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  background: linear-gradient(cyan, transparent), linear-gradient(-45deg, magenta, transparent), linear-gradient(45deg, yellow, transparent);
+  background-blend-mode: multiply;
   z-index: 50; }
+
+.modal-window.copy-url-modal {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  background-blend-mode: normal; }
+  .modal-window.copy-url-modal input {
+    width: 100%; }
 
 .modal {
   margin: 0 auto;
@@ -1044,7 +1052,7 @@ form {
   top: 5%;
   border-radius: 3px;
   background-color: #fff;
-  box-shadow: 2px 2px 10px -6px rgba(0, 0, 0, 0.75); }
+  box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2); }
   .modal input {
     width: 100%;
     box-shadow: 2px 2px 10px -6px rgba(0, 0, 0, 0.75); }
